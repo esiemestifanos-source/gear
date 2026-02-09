@@ -1657,3 +1657,67 @@ h1,h2,h3{
 .hidden{
   display:none;
 }
+/* =====================================================
+   ✨ PREMIUM TEXT HOVER (NO MOVEMENT)
+===================================================== */
+
+
+/* nav links */
+.nav-link{
+  position: relative;
+  color:#aaa;
+  transition:.35s ease;
+}
+
+
+/* smooth glow */
+.nav-link:hover{
+  color:#fff;
+  text-shadow:0 0 12px rgba(255,255,255,.35);
+}
+
+
+/* animated underline */
+.nav-link::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:50%;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#00f5ff,#7b61ff);
+  transition:.35s ease;
+  transform:translateX(-50%);
+}
+
+.nav-link:hover::after{
+  width:100%;
+}
+
+
+
+/* buttons */
+button{
+  transition:.3s ease;
+}
+
+
+/* glow only — NO transform */
+button:hover{
+  box-shadow:
+    0 0 20px rgba(123,97,255,.35),
+    0 0 40px rgba(0,245,255,.15);
+}
+
+
+
+/* cards hover — depth only */
+.card{
+  transition:.35s ease;
+}
+
+.card:hover{
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.7),
+    0 0 30px rgba(0,245,255,.08);
+}

@@ -4,57 +4,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>GearSouls | Shop</title>
+  <title>Shop | GearSouls</title>
 
   <link rel="stylesheet" href="./css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<header class="navbar">
+<!-- ======================
+   PARTICLE BACKGROUND
+====================== -->
+<canvas id="particles"></canvas>
 
+
+<!-- ======================
+   NAVBAR
+====================== -->
+<header class="navbar">
   <a href="index.html" class="brand">
     <img src="img/0000.jpeg" class="brand-logo">
     <span class="brand-text">GearSouls</span>
   </a>
 
   <nav class="nav">
+    <a href="index.html" class="nav-link">Home</a>
     <a href="shop.html" class="nav-link">Shop</a>
-    <a href="cart.html" class="nav-link">
-      Cart <span id="cart-count" class="cart-count">0</span>
-    </a>
-
-    <!-- NEW PROFESSIONAL LINK -->
     <a href="account.html" class="auth-btn">Account</a>
   </nav>
-
 </header>
 
 
-
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <h1 class="hero-title">Forged in Steel. Powered by Souls.</h1>
-  <p class="hero-sub">Cyberpunk Gear • Premium Merch • Built for Legends</p>
+<!-- ======================
+   HERO
+====================== -->
+<section class="hero reveal">
+  <h1>Shop Gear</h1>
+  <p>Premium performance equipment</p>
 </section>
 
 
+<!-- ======================
+   SHOP PRODUCTS
+====================== -->
+<section class="shop-section reveal">
 
-<!-- ================= PRODUCTS ================= -->
-<section class="shop-section">
+  <h2 class="title">Product</h2>
 
-  <h2 class="title">Products</h2>
+  <div class="grid">
 
-  <div id="products" class="grid"></div>
+    <!-- Shopify injects inside this -->
+    <div class="card reveal">
+      <div id="product-component-1770599422791"></div>
+    </div>
 
+  </div>
 </section>
 
 
+<footer class="footer reveal">
+  © 2026 GearSouls
+</footer>
 
+
+
+<!-- ======================
+   APP.JS (ANIMATIONS)
+====================== -->
 <script src="app.js"></script>
-<script type="module" src="firebase.js"></script>
+
+
+
+<!-- ======================
+   SHOPIFY BUY BUTTON
+====================== -->
+<script>
+(function () {
+
+  var s = document.createElement("script");
+  s.src = "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
+
+  s.onload = function () {
+
+    var client = ShopifyBuy.buildClient({
+      domain: "shgx4k-wb.myshopify.com",
+      storefrontAccessToken: "68f1ddeff53ca07083b438c92837d296",
+    });
+
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+
+      ui.createComponent("product", {
+        id: "10743198351624",
+        node: document.getElementById("product-component-1770599422791"),
+        moneyFormat: "€{{amount_with_comma_separator}}"
+      });
+
+      /* add reveal after Shopify loads */
+      document
+        .getElementById("product-component-1770599422791")
+        .classList.add("show");
+
+    });
+  };
+
+  document.body.appendChild(s);
+
+})();
+</script>
 
 </body>
 </html>
